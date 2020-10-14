@@ -1,0 +1,170 @@
+{"ru":
+  {"Weather":{
+    "weather_error":"Введите название/индекс вашего города",
+    "cod_404":"Город не найден",
+    "wind":"Скорость ветера",
+    "temp":"Температура",
+    "last_update":"Последнее обновление",
+    "city/country":"Город/Страна",
+    "humidity":"Влажность",
+    "now":"Сейчас",
+    "visibility":"Видимость",
+    "pressure":"Давление",
+    "uvi":"UV Индекс",
+    "suns":"Рассвет/Закат"
+  },
+    "lyrics":{
+      "error":"Запрос не найден",
+      "lyrics_error":"Напишите что вы хотите найти"
+  },
+    "Translate":{
+      "translate_error":"Напиши что ты хочешь перевести"
+  },
+    "coin":{
+      "tails":"Вам выпала **Решка**",
+      "heads":"Вам выпал **Орел**"
+  },
+    "osu":{
+      "menu":"```Выберите цифру мода\n\n1.Standart\n2.Taiko\n3.CtB\n4.Osu!mania\n\n Для выхода из меню 'osu', введите 'exit' ```",
+      "menu1":"```Введите число```",
+      "menu2":"```Напишите свой ник```",
+      "exit_menu":"```Вы вышли из меню 'osu'```",
+      "error_osu":"```Кажется вы ввели что-то неправильно :(\nПопробуйте еще раз!```",
+      "board":"```Пользователь: {}({}) ({})\nДата создания: {}\nУровень: {}\nРейтинговый Счет: {}\nОбщий Счет: {}\nPP: {}\nРанк по всему миру: {}(По стране: {})\nТочность: {}\nСыграно игр: {}\n300s: {} | 100s: {} | 50: {}\nSSH: {} | SH: {} | SS: {} | S: {} | A:{} ```",
+      "osu_error":"```Время запроса вышло```"},    
+      
+    "info":{
+      "error_user":"Пользователь не найден",
+      "spotify":"__Тип__: **{}**\n__Название__: **{}**\n__Исполнитель__: **{}**\n__Альбом__: **{}**\n__Длительность__: **{}** [*Осталось: {}*]",
+      "none":"Без ограничений",
+      "low":"Низкий (Участнику необходимо иметь подтвержденный e-mail)",
+      "medium":"Средний (Участник также должен быть зарегестрирован в Discord +5 минут)",
+      "high":"Высокий (Также должен быть участником сервера +10 минут)",
+      "extreme":"Экстремальный (Участник должен иметь подтврежденный телефон в Discord)",
+        "activity":{
+  			"name":"__Название:__ **{}**\n", 
+  			"emoji":"__Emoji:__ {}",
+  			"app_id":"Application ID: {}\n",
+			"details":"__Детали:__ **{}**\n",
+			"state":"__Статус:__ **{}**\n",
+      "duration":{"text":"__Длительность:__ {} {}",
+        "start":"**{}**",
+        "end":"[*Осталось: {}*]"}}
+			},
+
+    "embed":{
+      "help":"Для работы команд, вы должны обладать правами **Менеджер Ролей**\n\n`em new` Создать личный Embed\n`em view` Просмотр Embed\n`em image [url]` Создание изображения в Embed'a\n`em title [text]` Заголовок\n`em color [hex code]` Цвет полосочки\n`em descr [text]` Текст в embed'e\n`em send [#channel]` Отправка embed'a в указаный канал (После отправки, автоматически удаляется)\n`em clear` Очистка embed'а",
+      "new_embed":"Успешно создан пустой Embed",
+      "existing_embed":"У вас уже есть свои личный embed\nВы можете использовать 'em_clear', для его очистки.",
+      "no_embed":"Создайте новый embed `em new`",
+      "set_image":"Добавлено изображение в Embed",
+      "set_color":"Выбран цвет полоски Embed",
+      "set_title":"Добавлен заголовок",
+      "set_descr":"Добавлен текст в Embed",
+      "deleted":"Ваш Embed был удален",
+      "view":"Пусто:("
+    },
+    "errors":{
+      "manage_role":"Не хватает прав `Manage Roles`",
+      "error_found_role":"Кажется что такой роли нет",
+      "no_found_user":"Пользователь `{}` не найден",
+      "bot_not_perm":"Я не могу воспользоваться этим. У меня не хватает прав на выполнения данной команды",
+      "None_url":"Ссылка не работает, либо ее не существует"
+      
+    },
+    "ban":{
+      "banned":"Пользователь **{}** был забанен",
+      "ban_yourself":"Вы не можете забанить самого себя :D"
+    },
+    "kick":{
+      "kicked":"Пользователь **{}** был кикнут",
+      "kick_yourself":"Вы не можете кикнуть самого себя :D"
+    }
+  },
+
+"en":
+  {"Weather":{
+    "weather_error":"Enter the name/zip of your city",
+    "cod_404":"City no found",
+    "cod_401":"The API is temporarily unavailable",
+    "wind":"Speed Wind",
+    "temp":"Temperature",
+    "last_update":"Last Update",
+    "city/country":"City/Country",
+    "humidity":"Humidity",
+    "now":"Now",
+    "visibility":"Visibility",
+    "pressure":"Pressure",
+    "uvi":"UV Index",
+    "suns":"Sunrise/Sunset"
+
+    },
+    "lyrics":{
+      "error":"Response Failed",
+      "lyrics_error":"Enter the name song"
+    },
+    "Tranlsate":{
+      "translate_error":"Write what you want to translate"
+    },
+    "coin":{
+      "tails":"We got **Tails**",
+      "heads":"We got **Heads**"
+    },
+    "osu":{
+      "menu":"```Select the number mod\n\n1.Standart\n2.Taiko\n3.CtB\n4.Osu!mania\n\nTo exit the  menu 'osu', enter 'exit'```",
+      "menu1":"```Write a number```",
+      "menu2":"```Write your nickname```",
+      "exit_menu":"```We leave menu 'osu'```",
+      "error_osu":"```I think you entered something wrong\nTry again!```",
+      "board":"```Username :{}({}) ({})\nDate Create: {}\nLevel: {}\nRanked Score: {}\nTotal Score: {}\nPP: {}\nPP Country Rank: {}(Country:{})\nAccuracy: {}\nPlayCount: {}\n300s: {} | 100s: {} | 50: {}\nSSH: {} | SH: {} | SS: {} | S: {} | A: {}```",
+      "osu_error":"Request time out "
+    },
+    "info":
+    {"none":"None (Unrestricted)",
+      "low":"Low (Verified E-Mail Discord Account)",
+      "medium":"Medium (+5 Minute Register Discord Account)",
+      "high": "High (Be a participant for 10 minutes)",
+      "extreme":"Extreme (Verified number phone on their Discord)",
+      "spotify":"__Type__: **{}**\n__Title__: **{}**\n__Artist__: **{}**\n__Album__: **{}**\n__Duration__: **{}** [*Left: {}*]",
+      "error_user":"User not found",
+      "activity":{
+        "name":"__Name:__ **{}**\n", 
+        "emoji":"__Emoji:__ {}",
+  		"app_id":"Application ID: {}",
+		"details":"__Details:__ **{}**\n",
+		"state":"__State:__ **{}**\n",
+      "duration":{"text":"__Duration:__ {} {}",
+        "start":"**{}**",
+        "end":"[*Left: {}*]"}
+      }
+    }, 
+    "embed":{
+      "help":"For teams to work, you must have the **Manage Roles**\n`em_new` Create a personal embed\n`em view ` Viewing embed\n`em image [url]` Create picture in Embed\n`em title [text]` Title\n`em color [hex code]` Color Embed Line\n`em descr [text]` Create description in Embed\n`em send [#channel]` Send in #channel your embed(After sending an embed, it is automatically deleted)\n`em clear` Deleted your Embed ",
+      "new_embed":"Create empty embed",
+      "existing_embed":"You already have your own personal embed\nYou can use `em_clear` to clear it.",
+      "no embed":"Create new Embed `em new`",
+      "set_image":"Add image in embed",
+      "set_color":"Set color line",
+      "set_title":"Add title",
+      "set_descr":"Add text in embed",
+      "deleted":"Your embed was deleted",
+      "view":"Empty:("
+    },
+    "errors":{
+      "manage_role":"No permissions `Manage Roles`",
+      "error_found_role":"It seems that there is no such role",
+      "no_found_user":"User `{}` not found",
+      "bot_not_perm":"I can't use it. I don't have enough permissions to execute this command",
+      "None_url":"URL No Worked, or it doesn't exist"
+    },
+    "ban":{
+      "banned":"User **{}** was banned",
+      "ban_yourself":"You can't banned yourself :D"
+    },
+    "kick":{
+      "kicked":"User **{}** was kicked",
+      "kick_yourself":"You can't kicked yourself :D"
+    }
+}
+}
+  
