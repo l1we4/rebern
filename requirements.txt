@@ -1,0 +1,8 @@
+discord
+asyncio
+googletrans
+pymongo
+requests
+psutil
+py-cpuinfo
+Pillow
