@@ -22,7 +22,8 @@ start_extensions = ['modules.owner',
                     'modules.embed',
                     'modules.info',
                     'modules.help',
-                    'modules.fun']
+                    'modules.fun',
+                    'modules.utillites']
 
 if __name__ == "__main__":
     for extension in start_extensions:
