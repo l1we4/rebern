@@ -79,7 +79,11 @@ class Info(commands.Cog):
                 await ctx.send(embed = em)
 
             elif ctx.author.activity.type[0] == "playing":
+
                 activity = ctx.author.activity
+
+                details = activity.details
+                state = activity.state
 
                 name = (text['activity']['name']).format(activity.name)
 
@@ -90,19 +94,7 @@ class Info(commands.Cog):
                 else:
                     app_id = (text['activity']['app_id']).format(app_id)
                 
-                try:
-                    details = activity.details
-                except AttributeError:
-                    details = ""
-                else:
-                    details = (text['activity']['details']).format(details)
 
-                try:
-                    state = activity.state
-                except AttributeError:
-                    state = ""
-                else:
-                    state = (text['activity']['state']).format(state)
 
                 try:
                     large_image = activity.large_image_url
@@ -162,6 +154,16 @@ class Info(commands.Cog):
 
                 if cheker_start == True or cheker_end == True:
                     duration = (text['activity']['duration']['text']).format(duration_start, duration_end)
+
+                if details == None:
+                    details = ""
+                else:
+                    details = (text['activity']['details']).format(details)
+
+                if state == None:
+                    state = ""
+                else:
+                    state = (text['activity']['state']).format(state)
 
                 em = discord.Embed(
                     title = activity.name,
