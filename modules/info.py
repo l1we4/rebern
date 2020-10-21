@@ -82,9 +82,6 @@ class Info(commands.Cog):
 
                 activity = ctx.author.activity
 
-                details = activity.details
-                state = activity.state
-
                 name = (text['activity']['name']).format(activity.name)
 
                 try:
@@ -155,15 +152,25 @@ class Info(commands.Cog):
                 if cheker_start == True or cheker_end == True:
                     duration = (text['activity']['duration']['text']).format(duration_start, duration_end)
 
-                if details == None:
+                try:
+                    details = activity.details
+                except AttributeError:
                     details = ""
                 else:
-                    details = (text['activity']['details']).format(details)
+                    if details == None:
+                        details = ""
+                    else:
+                        details = (text['activity']['details']).format(details)
 
-                if state == None:
+                try:
+                    state = activity.state
+                except AttributeError:
                     state = ""
                 else:
-                    state = (text['activity']['state']).format(state)
+                    if state == None:
+                        state = ""
+                    else:
+                        state = (text['activity']['state']).format(state)
 
                 em = discord.Embed(
                     title = activity.name,
