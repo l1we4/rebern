@@ -52,6 +52,10 @@ class Owner(commands.Cog):
         em1= discord.Embed(Title=(self.bot.user.name), description="Invite bot --> https://discordapp.com/oauth2/authorize?client_id=464180325073813505&scope=bot&permissions=1342581886", color = ctx.author.colour)
         await ctx.send(embed=em1)
 
+    @commands.command()
+    @commands.check(in_owner)
+    async def tt(self,ctx,arg):
+        await ctx.send(f"```{str(eval(arg))}```")
 
 def setup(bot):
     bot.add_cog(Owner(bot))

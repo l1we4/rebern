@@ -9,6 +9,7 @@ class Event_commands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
     @commands.Cog.listener()
     async def on_guild_join(self,rec):
         record = await Mongo.get_record('cfg_ser','guild_id', str(rec.id))
@@ -56,10 +57,15 @@ class Event_commands(commands.Cog):
         if self.bot.user.id == rec.user_id:
             pass
         else:
-            member = discord.utils.get(guild.members, id = rec.user_id)
-            role = record['role']
-            role = discord.utils.get(guild.roles, id = int(role))
-            await member.remove_roles(role)
+            member = await guild.fetch_member(rec.user_id)
+            try:
+                role = record['role']
+            except:
+                return
+            else:
+                role = discord.utils.get(guild.roles, id = int(role))
+                await member.remove_roles(role)
+
 
 def setup(bot):
     bot.add_cog(Event_commands(bot))
