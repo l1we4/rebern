@@ -2,19 +2,26 @@ import discord
 from discord.ext import commands
 import datetime
 
+intents = discord.Intents.default()
+intents.guilds = True
+intents.members = True
+intents.presences = True
+
+
 from utills.config import Tokens
 async def in_owner(ctx):
     return ctx.author.id == 244835276361302016
 
-client = commands.Bot(command_prefix = Tokens.Prefix)
+client = commands.Bot(command_prefix= Tokens.Prefix, intents = intents)
 
 @client.event
 async def on_ready():
     print((datetime.datetime.now().strftime("%H:%M:%S")) + "| | " + (client.user.name) + '#' + (client.user.discriminator))
-    game = discord.Game(";help || well...")
+    game = discord.Game(f"{Tokens.Prefix}help || well...")
     await client.change_presence(status=discord.Status.idle, activity =game)
 
 client.remove_command('help')
+
 
 start_extensions = ['modules.owner',
                     'modules.rr',
