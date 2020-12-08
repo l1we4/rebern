@@ -4,7 +4,8 @@ from discord.ext import commands
 import datetime
 import requests
 import json
-from googletrans import Translator
+
+from google_trans_new import google_translator 
 from io import BytesIO
 import os
 
@@ -80,17 +81,17 @@ class Utillites(commands.Cog):
         """
         Translate Ru-En
         """
-        translator = Translator()
-        ru = translator.translate(f'{arg1}', dest='ru')
-        en = translator.translate(f'{arg1}', dest='en')
+        translator = google_translator()
+        ru = translator.translate(text=f'{arg1}', lang_tgt='ru')
+        en = translator.translate(text=f'{arg1}', lang_tgt='en')
         em1 = discord.Embed(title="**Translate**", color=ctx.author.color)
-        em1.add_field(name="English", value=(en.text), inline=False)
+        em1.add_field(name="English", value=en, inline=False)
         await ctx.send(embed=em1)
         em1 = discord.Embed(title="**Translate**", color=ctx.author.color)
-        em1.add_field(name="Russian", value=(ru.text), inline=False)
+        em1.add_field(name="Russian", value=ru, inline=False)
         await ctx.send(embed=em1)
 
-    @translate.error
+    #@translate.error
     async def translate_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
             text = (await lang_text(ctx.message.guild.id))['Translate']

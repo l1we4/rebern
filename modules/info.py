@@ -159,12 +159,13 @@ class Info(commands.Cog):
         else:
             idd = arg or str(ctx.author.mention)
             try:
-                ping = await commands.UserConverter().convert(ctx, idd)
+                user = await commands.UserConverter().convert(ctx, idd)
             except:
                 user = await self.bot.fetch_user(int(idd))
             else:
-                user = discord.utils.get(ctx.message.guild.members, name = ping.name)
-        
+                i = ctx.message.guild.get_member(user.id)
+                print(i)
+
             if user == None:
                 em = discord.Embed(title = "Error", description = "User no found", color = 0xff0000)
                 await ctx.send(embed = em)

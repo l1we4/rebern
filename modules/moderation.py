@@ -39,10 +39,6 @@ class Moderation(commands.Cog):
                 description = (text['kick']['kicked']).format(user),
                 color= 0xff3232)
                 await ctx.send(embed = em)
-        
-
-
-
 
     @commands.command()
     @commands.has_permissions(ban_members=True)
@@ -50,11 +46,10 @@ class Moderation(commands.Cog):
     async def ban(self, ctx, user, reason = None):
         text= (await lang_text(ctx.message.guild.id))['ban']
         try:
-            member = await commands.UserConverter().convert(ctx , user) 
-        except:
             user = await self.bot.fetch_user(user)
-        else:
-            user = discord.utils.get(ctx.message.guild.members, name = member.name)   
+        except:
+            user = commands.UserConverter().convert(ctx, user)
+
         if ctx.message.author.id == user.id:
             em = discord.Embed(title = "Error",
             description = text['ban_yourself'],
