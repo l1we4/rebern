@@ -1,6 +1,6 @@
 discord.py 
 asyncio
-googletrans
+google_trans_new
 pymongo
 requests
 psutil
