@@ -51,8 +51,143 @@ class Info(commands.Cog):
     @commands.command()
     async def info(self, ctx, arg = None):
         text= (await lang_text(ctx.message.guild.id))['info']
+        if arg == "status":
+            if ctx.author.activity.name == "Spotify":
 
-        if arg == "server":
+                activity = ctx.author.activity
+                time_all = datetime.datetime.utcfromtimestamp(activity.duration.seconds).strftime('%H:%M:%S')
+                time2 = int(activity.end.timestamp()) - int(datetime.datetime.now().timestamp())
+                spotify_end = datetime.datetime.utcfromtimestamp(time2).strftime('%H:%M:%S')
+                
+                em = discord.Embed(
+                    title = activity.name, 
+                    description = (text['spotify']).format(activity.name, activity.title, activity.artist, activity.album, time_all, spotify_end),
+                    color = activity.color)
+                em.set_thumbnail(url = activity.album_cover_url)
+                await ctx.send(embed = em)
+
+            elif ctx.author.activity.type[0] == "custom":
+                activity = ctx.author.activity
+
+                name = (text['activity']['name']).format(activity.name)
+                if activity.emoji == None:
+                    emoji = ""
+                else:
+                    emoji = (text['activity']['emoji']).format(activity.emoji)
+
+                em = discord.Embed(
+                    title = "Custom Status",
+                    description = f"{name}\n{emoji}",
+                    color = ctx.author.color)
+                await ctx.send(embed = em)
+
+            elif ctx.author.activity.type[0] == "playing":
+
+                activity = ctx.author.activity
+
+                name = (text['activity']['name']).format(activity.name)
+
+                try:
+                    app_id = activity.application_id
+                except AttributeError:
+                    app_id = ""
+                else:
+                    app_id = (text['activity']['app_id']).format(app_id)
+
+                try:
+                    large_image = activity.large_image_url
+                except AttributeError:
+                    large_image = None
+
+                try:
+                    small_image = activity.small_image_url
+                except AttributeError:
+                    small_image = None
+
+                try:
+                    large_text = activity.large_image_text
+                except AttributeError:
+                    large_text = None
+
+                try:
+                    small_text = activity.small_image_text
+                except AttributeError:
+                    small_text = None
+
+                if small_image != None or small_text != None:
+                    small_image_full = f"__Small image:__ [{activity.small_image_text}]({small_image})\n"
+                elif small_image == None and small_text == None:
+                    small_image_full= ""
+
+                if large_image != None or large_text != None:
+                    large_image_full = f"__Large Image:__ [{activity.large_image_text}]({large_image})\n"
+                elif large_image == None and large_text == None:
+                    large_image_full = ""
+
+                try:
+                    duration_start = activity.timestamps['start']
+                except KeyError:
+                    duration_start = ""
+                    cheker_start = None
+                else:
+                    time1 = str(datetime.datetime.now().timestamp())[:10]
+                    time2 = str(duration_start)[:10]
+                    time = (int(time2) - int(time1))*(-1)
+                    time_start = datetime.datetime.utcfromtimestamp(time).strftime('%H:%M:%S')
+                    duration_start = (text['activity']['duration']['start']).format(time_start)
+                    cheker_start = True
+
+                try:
+                    duration_end = activity.timestamps['end']
+                except KeyError:
+                    duration_end = ""
+                    cheker_end = None
+                else:
+                    time1 = str(datetime.datetime.now().timestamp())[:10]
+                    time2 = str(duration_end)[:10]
+                    time = (int(time2) - int(time1))*(-1)
+                    time_end = datetime.datetime.utcfromtimestamp(time).strftime('%H:%M:%S')
+                    duration_end = (text['activity']['duration']['end']).format(time_end)
+                    cheker_end = True
+
+                if cheker_start == True or cheker_end == True:
+                    duration = (text['activity']['duration']['text']).format(duration_start, duration_end)
+
+                try:
+                    details = activity.details
+                except AttributeError:
+                    details = ""
+                else:
+                    if details == None:
+                        details = ""
+                    else:
+                        details = (text['activity']['details']).format(details)
+
+                try:
+                    state = activity.state
+                except AttributeError:
+                    state = ""
+                else:
+                    if state == None:
+                        state = ""
+                    else:
+                        state = (text['activity']['state']).format(state)
+
+                em = discord.Embed(
+                    title = activity.name,
+                    description = f'{name}{details}{state}{large_image_full}{small_image_full}{duration}')
+
+                if large_image == None:
+                    large_image = ""
+                
+                if small_image == None:
+                    small_image = ""
+
+                em.set_thumbnail(url = large_image)
+                em.set_footer(text= app_id, icon_url = small_image)
+                await ctx.send(embed = em)
+
+        elif arg == "server":
             guild = ctx.author.guild
             lvl= str(guild.verification_level)
 
