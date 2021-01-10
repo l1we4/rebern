@@ -42,7 +42,7 @@ class Fun(commands.Cog):
         text= (await lang_text(ctx.message.guild.id))['osu']
         await ctx.send(text['menu'])
         while True:
-            msg1 = await self.bot.wait_for('message', timeout=30, check=lambda message:ctx.author)
+            msg1 = await self.bot.wait_for('message', timeout=30, check=lambda message:ctx.message.author)
             check1 = msg1.content.isdigit()
             if msg1.content == 'exit':
                 await ctx.send(text['exit_menu'])
