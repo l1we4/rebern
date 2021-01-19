@@ -9,6 +9,11 @@ class Event_commands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.Cog.listener()
+    async def on_member_join(self,perc):
+        if perc.guild.id == 456769247490736129:
+            role1= discord.utils.get(perc.guild.roles, id = 551505285773262863)
+            await perc.add_roles(role1)
 
     @commands.Cog.listener()
     async def on_guild_join(self,rec):
