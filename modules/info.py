@@ -7,6 +7,13 @@ from discord.ext.commands.core import command
 from utills.u_mongo import Mongo
 import datetime
 
+import time
+import psutil
+import cpuinfo
+from cpuinfo import get_cpu_info
+import platform
+
+
 async def lang_text(guild_id):
     record = await Mongo.get_record('cfg_ser','guild_id',str(guild_id))
     final_lang= record['lang']
@@ -229,6 +236,64 @@ class Info(commands.Cog):
                 em.set_footer(text= app_id, icon_url = small_image)
                 await ctx.send(embed = em)  
 
+        elif arg == "bot":
+        #Total
+            tG = 0
+            tM = 0
+            for guild in self.bot.guilds:
+                tG = tG + 1
+                try:
+                    tM = int(guild.member_count) + tM
+                except:
+                    pass
+        
+        #CPU
+            cpu_count= psutil.cpu_count()
+            cpu_name= get_cpu_info()['brand_raw']
+        #RAM
+            totalmem= psutil.virtual_memory().total //1024//1024
+            used= psutil.virtual_memory().used  //1024//1024
+            freemem= psutil.virtual_memory().available //1024//1024
+
+        #OS
+            nOS= platform.uname().system
+            vOS= platform.uname().release
+            os = platform.system()
+            if os == "Linux":
+                p1= platform.linux_distribution()[0]
+                p2= platform.linux_distribution()[1]
+                p3= platform.linux_distribution()[2]
+            elif os == "Windows":
+                p1= platform.win32_ver()[0]
+                p2= ""
+                p3= platform.win32_ver()[1]
+        #Время работы
+            time_now = datetime.datetime.now().timestamp()
+            psutil_day = int(datetime.datetime.fromtimestamp(time_now - psutil.boot_time()).strftime("%d")) - 1
+            boot_time = datetime.datetime.fromtimestamp(time_now - psutil.boot_time()).strftime("%H:%M:%S")
+            boot_time = (f"{psutil_day} days, {boot_time}")
+        #Работа Бота
+            psutil_day = int(datetime.datetime.fromtimestamp(time_now - int(psutil.Process().create_time())).strftime("%d")) - 1
+            boot_time_bot = datetime.datetime.fromtimestamp(time_now - int(psutil.Process().create_time())).strftime("%H:%M:%S")
+            boot_time_bot = (f"{psutil_day} days, {boot_time_bot}")
+
+            em1= discord.Embed(title = 'Statistic Bot',
+            description= f"""**Tag:** __{self.bot.user}__
+                —>**Id:** __{self.bot.user.id}__
+                **Total Guild:** __{tG}__
+                **Total Member:** __{tM}__
+                **Python:** __{platform.python_version()}__ (**discord.py:** __{discord.__version__}__)
+                **System**
+                —>**CPU:** __{cpu_name}({cpu_count}x Сore)__
+                —>**RAM:** __{used}Mb/{freemem}Mb/{totalmem}Mb__
+                —>**OS:** {nOS} {platform.architecture()[0]} (**{p1.title()} {p2}** {p3}) [{vOS}]
+                **Uptime**
+                —>**System:** __{boot_time}__
+                —>**Bot:** __{boot_time_bot}__""")
+            em1.set_thumbnail(url = self.bot.user.avatar_url)
+                
+            await ctx.send(embed = em1)
+
         else:
             idd = arg or str(ctx.author.id)
             try:
@@ -263,10 +328,6 @@ class Info(commands.Cog):
                 em1.set_author(name=f"User Info",icon_url = ctx.author.avatar_url)
                 em1.set_thumbnail(url= user.avatar_url)
                 await ctx.send(embed = em1)
-
-                
-
-
 
 
 
