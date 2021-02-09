@@ -20,18 +20,23 @@ def current(rc, bg):
 
     # Температура
     temp = f"{round(responce_current['main']['temp'])}c°"
-    draw_text.text((530,450),temp ,font=font)
+    draw_text.text((540,410),temp ,font=font)
 
     # Город
     font = ImageFont.truetype("./resource/Sitka.ttc", size=55)
     city = responce_current['name']
     country = responce_current['sys']['country']
 
+    #Высота текста города
     w,h = draw_text.textsize(f'{city}/{country}')
     if w <= 43:
         W = (1050-w)/2
     else:
         W = (900-w)/2
+
+    #Мин/Макс температура под "Сейчас"
+    CurTempMinMax = f"{round(responce_current['main']['temp_min'])}c°/{round(responce_current['main']['temp_max'])}c°"
+    draw_text.text((490,500), CurTempMinMax, font=font)
 
     draw_text.text((W,120), f'{city}/{country}',font=font)
     return print("current End", h)
