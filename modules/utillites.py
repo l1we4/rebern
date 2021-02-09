@@ -166,7 +166,6 @@ class Utillites(commands.Cog):
             os.unlink(endpoint)
 
     @weather.error
-
     async def weather_error(self,ctx,error):
         text= (await lang_text(ctx.message.guild.id))['Weather']
         if isinstance(error, commands.MissingRequiredArgument):
