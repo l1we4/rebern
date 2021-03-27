@@ -10,7 +10,7 @@ from io import BytesIO
 import os
 
 import sys
-import weather_pic 
+import weather
 from utills.u_mongo import Mongo
 from utills.config import Tokens
 
@@ -160,7 +160,7 @@ class Utillites(commands.Cog):
         elif responce['cod'] == '401':
             await ctx.send(text['cod_401'])
         else:
-            endpoint = weather_pic.weather_start(arg, responce, ctx.author.id, text)
+            endpoint = weather.main(arg, responce, ctx.author.id, text)
             with open(endpoint, 'rb') as fp:
                 await ctx.send(file = discord.File(fp,'weather.png'))
             os.unlink(endpoint)
