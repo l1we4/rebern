@@ -202,7 +202,7 @@ class Info(commands.Cog):
                 
                 try:
                     activity.timestamps['start']
-                except AttributeError:
+                except:
                     duration = ''
                 else:
                     dr1 = str(activity.timestamps['start'])[:10]
