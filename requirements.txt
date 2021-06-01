@@ -6,3 +6,4 @@ requests
 psutil
 py-cpuinfo
 Pillow
+distro
