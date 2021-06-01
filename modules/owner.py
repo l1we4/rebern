@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 
+import platform
+
 from utills.u_mongo import Mongo
 
 async def in_owner(ctx):
