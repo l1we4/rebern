@@ -202,7 +202,7 @@ class Info(commands.Cog):
                 
                 try:
                     activity.timestamps['start']
-                except:
+                except AttributeError:
                     duration = ''
                 else:
                     dr1 = str(activity.timestamps['start'])[:10]
@@ -242,9 +242,9 @@ class Info(commands.Cog):
             vOS= platform.uname().release
             os = platform.system()
             if os == "Linux":
-                p1= platform.linux_distribution()[0]
-                p2= platform.linux_distribution()[1]
-                p3= platform.linux_distribution()[2]
+                p1= platform.libc_ver()[0]
+                p2= platform.libc_ver()[1]
+                p3= platform.libc_ver()[2]
             elif os == "Windows":
                 p1= platform.win32_ver()[0]
                 p2= ""
