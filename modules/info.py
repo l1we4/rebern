@@ -12,7 +12,7 @@ import psutil
 import cpuinfo
 from cpuinfo import get_cpu_info
 import platform
-
+import distro
 
 async def lang_text(guild_id):
     record = await Mongo.get_record('cfg_ser','guild_id',str(guild_id))
@@ -242,9 +242,9 @@ class Info(commands.Cog):
             vOS= platform.uname().release
             os = platform.system()
             if os == "Linux":
-                p1= platform.libc_ver()[0]
-                p2= platform.libc_ver()[1]
-                p3= platform.libc_ver()[2]
+                p1= distro.linux_distribution()[0]
+                p2= distro.linux_distribution()[1]
+                p3= distro.linux_distribution()[2]
             elif os == "Windows":
                 p1= platform.win32_ver()[0]
                 p2= ""
